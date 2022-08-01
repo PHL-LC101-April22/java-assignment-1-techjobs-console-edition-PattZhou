@@ -7,10 +7,11 @@ import java.util.Scanner;
  * Created by LaunchCode
  */
 public class TechJobs {
-
+    //    public TechJobs(String findByValue){
+//    }
     static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -112,14 +113,26 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        if (someJobs.size() == 0) {
+            System.out.println("No Results");
+        }
+//for each job in someJobs. key/value is an entry (name, position etc..)
+        for (HashMap<String, String> job : someJobs) {
+            String jobListing = "\n*****\n";
+            for (Map.Entry<String, String> jobDetails : job.entrySet()) {
+                jobListing += jobDetails.getKey() + ": " + jobDetails.getValue() + "\n";
+            }
+            jobListing += "*****";
+            System.out.println(jobListing);
 
-        System.out.println("printJobs is not implemented yet");
+        }
     }
 }
+// for (Map.Entry<String, String> job :someJobs.entrySet()){
